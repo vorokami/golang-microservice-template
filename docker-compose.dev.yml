@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    container_name: ${APP_NAME}
+    restart: "always"
+    volumes:
+      - ./logs:/app/logs
+    env_file:
+      - .env
+    ports:
+      - "${APP_PORT}:${EXTERNAL_PORT}"
